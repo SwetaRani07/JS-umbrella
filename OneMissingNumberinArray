@@ -1,0 +1,15 @@
+//Finding One Missing Number from an array without calculating the sum
+
+function missingNumber(arr){
+    let maxNum = Math.max(...arr);
+    for(let i=1; i<maxNum; i++){
+        if(!arr.includes(i)){
+            return i;
+        }
+    }
+    return maxNum + 1;
+}
+
+let arr1 = [1, 3, 4, 6, 5];
+
+console.log(missingNumber(arr1));
