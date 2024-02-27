@@ -1,0 +1,10 @@
+let a = [1,2,3,5];
+let b = [6,1,2,8,3,4,7,10,5];
+
+function secondLargest(arr){
+    arr.sort((a,b) => b-a);
+    return arr[1];
+}
+
+console.log(secondLargest(a));
+console.log(secondLargest(b));
