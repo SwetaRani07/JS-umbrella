@@ -1,0 +1,56 @@
+import React from 'react';
+import './style.css';
+
+export default function App() {
+  const [formData, setFormData] = React.useState({
+    userName: '',
+    password: '',
+  });
+
+  const submitData = (event) => {
+    event.preventDefault();
+    console.log(formData);
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevdata) => ({
+      ...prevdata,
+      [name]: value,
+    }));
+  };
+
+  const handleReset = () => {
+    setFormData({
+      userName: '',
+      password: '',
+    });
+  };
+
+  return (
+    <div>
+      <h1>Hello StackBlitz!</h1>
+      <p>Start editing to see some magic happen :)</p>
+      <form onSubmit={submitData}>
+        <input
+          type="text"
+          name="userName"
+          value={formData.userName}
+          onChange={handleChange}
+        />
+        <br />
+        <br />
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        <br />
+        <br />
+        <button type="submit">Submit</button>
+        <button onClick={handleReset}>Reset</button>
+      </form>
+    </div>
+  );
+}
