@@ -1,0 +1,45 @@
+import React from 'react';
+import './style.css';
+
+export default function App() {
+  const [timer, setTimer] = React.useState(0);
+  const [isActive, setisActive] = React.useState(false);
+  const intervalRef = React.useRef(null);
+
+  const startTimer = () => {
+    if (!isActive) {
+      intervalRef.current = setInterval(() => {
+        setTimer((prevTimer) => prevTimer + 1);
+      }, 1000);
+      setisActive(true);
+    }
+  };
+
+  const stopTimer = () => {
+    clearInterval(intervalRef.current);
+    setisActive(false);
+  };
+
+  const resetTimer = () => {
+    clearInterval(intervalRef.current);
+    setTimer(0);
+    setisActive(false);
+  };
+
+  return (
+    <div>
+      <h1>Stopwatch</h1>
+      <p>{timer}</p>
+      <div>
+        {!isActive ? (
+          <button onClick={startTimer}>Start Timer</button>
+        ) : (
+          <>
+            <button onClick={stopTimer}>Stop Timer</button>
+            <button onClick={resetTimer}>Reset Timer</button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
