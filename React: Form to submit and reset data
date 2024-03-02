@@ -2,55 +2,66 @@ import React from 'react';
 import './style.css';
 
 export default function App() {
-  const [formData, setFormData] = React.useState({
+  const [input, setInput] = React.useState({
     userName: '',
     password: '',
   });
+  const [submittedData, setsubmittedData] = React.useState({
+    userName: 'Display Name',
+    password: 'Display Password',
+  });
 
-  const submitData = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
+    setsubmittedData(input);
   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevdata) => ({
-      ...prevdata,
+  const handleInput = (event) => {
+    let { name, value } = event.target;
+    setInput((prevInput) => ({
+      ...prevInput,
       [name]: value,
     }));
   };
 
-  const handleReset = () => {
-    setFormData({
+  const resetInput = () => {
+    setInput({
       userName: '',
       password: '',
     });
+    setsubmittedData('');
   };
 
   return (
     <div>
       <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
-      <form onSubmit={submitData}>
+      <form onSubmit={onSubmit}>
         <input
           type="text"
           name="userName"
-          value={formData.userName}
-          onChange={handleChange}
+          value={input.userName}
+          onChange={handleInput}
         />
         <br />
         <br />
         <input
           type="password"
           name="password"
-          value={formData.password}
-          onChange={handleChange}
+          value={input.password}
+          onChange={handleInput}
         />
         <br />
         <br />
         <button type="submit">Submit</button>
-        <button onClick={handleReset}>Reset</button>
+        <br />
+        <br />
+        <button onClick={resetInput}>Reset</button>
       </form>
+      <p>
+        UserName: {submittedData.userName}
+        <br />
+        Password: {submittedData.password}
+      </p>
     </div>
   );
 }
