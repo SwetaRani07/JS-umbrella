@@ -25,3 +25,5 @@ function findSecondLargest(arr) {
 
 console.log(secondLargest(a));
 console.log(secondLargest(b));
+console.log(findSecondLargest(a));
+console.log(findSecondLargest(b));
