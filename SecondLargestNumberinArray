@@ -1,9 +1,26 @@
 let a = [1,2,3,5];
 let b = [6,1,2,8,3,4,7,10,5];
 
+//Using Sort
 function secondLargest(arr){
     arr.sort((a,b) => b-a);
     return arr[1];
+}
+
+//Using for loop
+function findSecondLargest(arr) {
+  let largest = arr[0];
+  let secondLargest = arr[1];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > largest) {
+      secondLargest = largest;
+      largest = arr[i];
+    } else if (arr[i] > secondLargest && arr[i] < largest) {
+      secondLargest = arr[i];
+    }
+  }
+  return secondLargest;
 }
 
 console.log(secondLargest(a));
