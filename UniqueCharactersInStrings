@@ -1,0 +1,10 @@
+function findUniqueCharacters(str) {
+  const characters = str.split('');
+  const uniqueCharacters = characters.filter((char, index) => {
+    return characters.indexOf(char) === index;
+  });
+  return uniqueCharacters.join('');
+}
+
+const str = "AAAARRRREEEEAAAA";
+console.log(findUniqueCharacters(str)); //ARE
