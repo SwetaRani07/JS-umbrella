@@ -29,7 +29,6 @@ export default function App() {
       }
     });
     setFinalData(sortedData);
-    //setSortedData(order);
   };
 
   const handleSearch = (event) => {
@@ -43,8 +42,7 @@ export default function App() {
 
   return (
     <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
+      <h1>Username fetch from API!</h1>
       <div style={{ marginBottom: '20px' }}>
         <input type="text" onChange={handleSearch} value={searchData} />
       </div>
